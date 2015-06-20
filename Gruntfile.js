@@ -5,7 +5,6 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
   // load all grunt tasks
   require('load-grunt-tasks')(grunt);
-  grunt.loadNpmTasks('web-component-tester');
   grunt.loadNpmTasks('grunt-aws-s3');
 
   // configurable paths
@@ -107,17 +106,6 @@ module.exports = function (grunt) {
     clean: {
       dist: ['.tmp', '<%= yeoman.dist %>/*'],
       server: '.tmp'
-    },
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
-      },
-      all: [
-        '<%= yeoman.app %>/scripts/{,*/}*.js',
-        '!<%= yeoman.app %>/scripts/vendor/*',
-        'test/spec/{,*/}*.js'
-      ]
     },
     useminPrepare: {
       html: '<%= yeoman.app %>/index.html',
@@ -363,7 +351,7 @@ module.exports = function (grunt) {
     aws_s3 : {
       dist: {
         options: {
-          bucket : 'rurri.com',
+          bucket : 'jhackwell.com',
           maxRetries : 3,
           uploadConcurrency : 10,
           downloadConcurrency : 10,
@@ -374,7 +362,7 @@ module.exports = function (grunt) {
 
         },
         files: [
-          {expand: true, cwd: '<%= yeoman.dist %>', src: ['**'], dest: '/', action:'upload'},
+          {expand: true, cwd: '<%= yeoman.dist %>', src: ['**'], dest: '/', action:'upload'}
           //{cwd: '<%= yeoman.dist %>', src: ['**'], dest: '/', action:'delete'}
         ]
       }
